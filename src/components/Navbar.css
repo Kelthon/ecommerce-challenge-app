@@ -1,0 +1,27 @@
+nav.navbar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+}
+
+nav.navbar > header.app-logo {
+  display: flex;
+  align-items: center;
+}
+
+nav.navbar > header.app-logo > img.app-logo-icon {
+  max-width: 60px;
+}
+
+nav.navbar > ul:is(.nav-menu, .shopping-menu) {
+  display: flex;
+  list-style: none;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+nav.navbar > ul:is(.nav-menu, .shopping-menu) > li > a {
+  text-decoration: none;
+}
