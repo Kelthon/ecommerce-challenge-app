@@ -4,24 +4,37 @@ nav.navbar {
   align-items: center;
   justify-content: space-between;
   padding-inline: 2rem;
+  padding-block: 1rem;
 }
 
 nav.navbar > header.app-logo {
   display: flex;
   align-items: center;
+  justify-content: start;
 }
 
 nav.navbar > header.app-logo > img.app-logo-icon {
-  max-width: 60px;
+  width: 50px;
+  height: 32px;
+  object-fit: cover;
 }
 
 nav.navbar > ul:is(.nav-menu, .shopping-menu) {
   display: flex;
   list-style: none;
   flex-flow: row wrap;
-  gap: 1rem;
+}
+
+nav.navbar > ul.nav-menu {
+  gap: 3rem;
+}
+
+nav.navbar > ul.shopping-menu {
+  gap: 2rem;
 }
 
 nav.navbar > ul:is(.nav-menu, .shopping-menu) > li > a {
   text-decoration: none;
+  font-weight: bold;
+  color: inherit;
 }
