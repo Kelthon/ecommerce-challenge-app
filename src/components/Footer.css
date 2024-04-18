@@ -1,0 +1,66 @@
+footer#footer {
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer#footer > div.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+footer#footer > div.container > section > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+footer#footer > div.container > section > :is(h2, h3) {
+  padding-block-end: 3rem;
+}
+
+footer#footer > div.container > section > address > p {
+  color: gray;
+  font-style: normal;
+}
+
+footer#footer > div.container > section > h3 {
+  font-size: 1rem;
+  color: gray;
+}
+
+footer#footer > div.container > section > ul > li > a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+footer#footer > div.container > section > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+footer#footer > div.container > section > p > :is(input, button) {
+  border: none;
+  border-bottom: 2px solid black;
+  background-color: transparent;
+}
+
+footer#footer > div.container > section > p > button {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+footer#footer > div.container > section > p > button:hover {
+  background-color: black;
+  color: white;
+}
