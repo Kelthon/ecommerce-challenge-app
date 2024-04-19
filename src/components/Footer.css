@@ -39,6 +39,10 @@ footer#footer > div.container > section > ul > li > a {
   font-weight: bold;
 }
 
+footer#footer > div.container > section > ul > li > a:hover {
+  text-decoration: underline;
+}
+
 footer#footer > div.container > section > p {
   display: flex;
   flex-wrap: wrap;
