@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import logo from '../logo.svg';
-import "./Navbar.css";
+import './Navbar.css';
 
 function Navbar(): JSX.Element {
   return (

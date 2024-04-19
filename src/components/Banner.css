@@ -1,0 +1,24 @@
+div.banner {
+  display: flex;
+  height: 500px;
+  position: relative;
+  flex-direction: row-reverse;
+  align-items: end;
+}
+
+div.banner > img {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+div.banner > div.container {
+  width: 50%;
+  height: 60%;
+  padding-block: 4rem;
+  padding-inline: 3rem;
+  margin-inline-end: 4rem;
+  background-color: antiquewhite;
+}
