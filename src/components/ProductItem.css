@@ -44,7 +44,7 @@ section.product-item > p.product-image > ul.tags > li {
   justify-content: center;
 }
 
-section.product-item > p.product-image > span.tags > small.released {
+section.product-item > p.product-image > ul.tags > li.released {
   background-color: green;
 }
 

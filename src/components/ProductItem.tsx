@@ -1,36 +1,49 @@
 import React from 'react';
 import './ProductItem.css';
-import placeholder from './placeholder.jpg';
 
-type Product = {
+interface ProductItemProps {
   name: string;
   description: string;
   isNew: boolean;
   image_path: string;
   price: number;
-  discountPrice: number;
-  discountPercent: number;
-};
+  discountPrice?: number;
+  discountPercent?: number;
+}
 
-export default function ProductItem(): JSX.Element {
+export default function ProductItem({
+  name,
+  description,
+  isNew,
+  image_path,
+  price,
+  discountPrice,
+  discountPercent
+}: ProductItemProps): JSX.Element {
   return (
     <section className="product-item">
-      <h3 className="name">Placeholder Product</h3>
+      <h3 className="name">{name}</h3>
       <p className="product-image">
-        <img src={placeholder} alt="A furniture product" />
+        <img src={image_path} alt="A furniture product" />
         <ul className="tags">
-          <li className="released">
-            <span>New</span>
-          </li>
+          {isNew && (
+            <li className="released">
+              <span>New</span>
+            </li>
+          )}
           <li className="discount-percent">
-            <span>-30%</span>
+            <span>-{discountPercent}%</span>
           </li>
         </ul>
       </p>
-      <p className="description">A furniture product</p>
+      <p className="description">{description}</p>
       <p className="product-price">
-        <b className="price">$ 500,00</b>
-        <small className="discount-price">$ 1500,00</small>
+        <b className="price">
+          $ {discountPrice ? discountPrice : price}
+        </b>
+        {discountPrice && (
+          <small className="discount-price">$ {price}</small>
+        )}
       </p>
     </section>
   );
