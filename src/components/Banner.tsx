@@ -1,11 +1,12 @@
 import React from 'react';
 import './Banner.css';
+import placeholder from './placeholder.jpg';
 
 function Banner(): JSX.Element {
   return (
     <div className="banner">
       <img
-        src="./pexels-fotoaibe-1643383.jpg"
+        src={placeholder}
         alt="A room filled with a new collection of furniture: chairs, tables, sofas, kitchen cabinets, bookshelves, etc."
       />
       <div className="container">
