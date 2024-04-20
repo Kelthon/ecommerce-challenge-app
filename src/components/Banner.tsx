@@ -2,7 +2,7 @@ import React from 'react';
 import './Banner.css';
 import placeholder from './placeholder.jpg';
 
-function Banner(): JSX.Element {
+export default function Banner(): JSX.Element {
   return (
     <div className="banner">
       <img
@@ -18,5 +18,3 @@ function Banner(): JSX.Element {
     </div>
   );
 }
-
-export default Banner;

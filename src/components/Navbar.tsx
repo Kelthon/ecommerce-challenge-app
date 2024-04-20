@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../logo.svg';
 import './Navbar.css';
 
-function Navbar(): JSX.Element {
+export default function Navbar(): JSX.Element {
   return (
     <nav className="navbar">
       <header className="app-logo">
@@ -42,5 +42,3 @@ function Navbar(): JSX.Element {
     </nav>
   );
 }
-
-export default Navbar;

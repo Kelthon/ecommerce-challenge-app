@@ -12,7 +12,7 @@ type Product = {
   discountPercent: number;
 };
 
-function ProductItem(): JSX.Element {
+export default function ProductItem(): JSX.Element {
   return (
     <section className="product-item">
       <h3 className="name">Placeholder Product</h3>
@@ -35,5 +35,3 @@ function ProductItem(): JSX.Element {
     </section>
   );
 }
-
-export default ProductItem;
