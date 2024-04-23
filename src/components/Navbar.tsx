@@ -29,22 +29,22 @@ export default function Navbar(): JSX.Element {
       <ul className="shopping-menu">
         <li>
           <a href="#">
-            <RiUserLine />
+            <RiUserLine className="icon" />
           </a>
         </li>
         <li>
           <a href="#">
-            <RiSearchLine />
+            <RiSearchLine className="icon" />
           </a>
         </li>
         <li>
           <a href="#">
-            <RiHeartLine />
+            <RiHeartLine className="icon" />
           </a>
         </li>
         <li>
           <a href="#">
-            <RiShoppingCart2Line />
+            <RiShoppingCart2Line className="icon" />
           </a>
         </li>
       </ul>

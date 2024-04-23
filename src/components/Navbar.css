@@ -42,3 +42,7 @@ nav.navbar > ul:is(.nav-menu, .shopping-menu) > li > a {
 nav.navbar > ul:is(.nav-menu, .shopping-menu) > li > a:hover {
   color: gray;
 }
+
+nav.navbar > ul.shopping-menu > li > a > svg.icon {
+  font-size: 1.5rem;
+}
