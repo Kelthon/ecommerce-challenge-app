@@ -1,0 +1,22 @@
+div#feature-box {
+  background-color: antiquewhite;
+  padding-block: 3rem;
+}
+
+div#feature-box > ul {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+
+div#feature-box > ul > li {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+}
+
+.icon {
+  font-size: 3.5rem;
+}
