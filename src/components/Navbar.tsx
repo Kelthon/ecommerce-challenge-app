@@ -1,4 +1,5 @@
 import React from 'react';
+import { RiHeartLine, RiSearchLine, RiShoppingCart2Line, RiUserLine } from 'react-icons/ri';
 import logo from '../logo.svg';
 import './Navbar.css';
 
@@ -27,16 +28,24 @@ export default function Navbar(): JSX.Element {
 
       <ul className="shopping-menu">
         <li>
-          <a href="#">account</a>
+          <a href="#">
+            <RiUserLine />
+          </a>
         </li>
         <li>
-          <a href="#">search</a>
+          <a href="#">
+            <RiSearchLine />
+          </a>
         </li>
         <li>
-          <a href="#">heart</a>
+          <a href="#">
+            <RiHeartLine />
+          </a>
         </li>
         <li>
-          <a href="#">shopping-cart</a>
+          <a href="#">
+            <RiShoppingCart2Line />
+          </a>
         </li>
       </ul>
     </nav>
