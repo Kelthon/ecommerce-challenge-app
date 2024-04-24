@@ -3,6 +3,7 @@ section#category-list {
   align-items: center;
   flex-flow: column nowrap;
   padding-inline: 4rem;
+  margin-block-end: 1rem;
 }
 
 section#category-list > h2.category-list-title {
@@ -15,6 +16,11 @@ section#category-list > ul.categories {
   list-style: none;
   flex-flow: row wrap;
   gap: 1rem;
+}
+
+section#category-list > ul.categories > li.category-item:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 section#category-list > ul.categories > li.category-item > p.category-image {
