@@ -73,19 +73,28 @@ export default function ProductItem({
           )}
         </footer>
       </div>
+
       <div className="overlay">
+        <a href="#">See Details</a>
+
         <ul className="product-quick-links">
-          <li className='quick-link'>
-            <a href="#">See Details</a>
+          <li className="quick-link">
+            <a href="#">
+              <RiShareLine />
+              <span>Share</span>
+            </a>
           </li>
-          <li className='quick-link'>
-            <a href="#"><RiShareLine /><span>Share</span></a>
+          <li className="quick-link">
+            <a href="#">
+              <RiArrowLeftRightLine />
+              <span>Compare</span>
+            </a>
           </li>
-          <li className='quick-link'>
-            <a href="#"><RiArrowLeftRightLine /><span>Compare</span></a>
-          </li>
-          <li className='quick-link'>
-            <a href="#"><RiHeartLine /><span>Like</span></a>
+          <li className="quick-link">
+            <a href="#">
+              <RiHeartLine />
+              <span>Like</span>
+            </a>
           </li>
         </ul>
       </div>
