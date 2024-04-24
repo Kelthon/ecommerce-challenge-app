@@ -1,50 +1,94 @@
 import React from 'react';
 import './ProductItem.css';
+import placeholder from './placeholder.jpg';
+import { RiArrowLeftRightLine, RiHeartLine, RiShareLine } from 'react-icons/ri';
 
-interface ProductItemProps {
-  name: string;
-  description: string;
+interface ProductTagsProps {
   isNew: boolean;
-  image_path: string;
-  price: number;
-  discountPrice?: number;
   discountPercent?: number;
 }
 
-export default function ProductItem({
-  name,
-  description,
+export interface ProductItemProps extends ProductTagsProps {
+  id: number;
+  name: string;
+  description: string;
+  imagePath: string;
+  price: number;
+  discountPrice?: number;
+}
+
+function ProductTags({
   isNew,
-  image_path,
-  price,
-  discountPrice,
-  discountPercent
-}: ProductItemProps): JSX.Element {
+  discountPercent,
+}: ProductTagsProps): JSX.Element {
   return (
-    <section className="product-item">
-      <h3 className="name">{name}</h3>
-      <p className="product-image">
-        <img src={image_path} alt="A furniture product" />
-        <ul className="tags">
+    <>
+      {(isNew || discountPercent) && (
+        <ul className="product-tags">
           {isNew && (
-            <li className="released">
+            <li className="new-product">
               <span>New</span>
             </li>
           )}
-          <li className="discount-percent">
-            <span>-{discountPercent}%</span>
+          {discountPercent && (
+            <li className="discount-percent">
+              <span>&minus;{discountPercent}&percnt;</span>
+            </li>
+          )}
+        </ul>
+      )}
+      ;
+    </>
+  );
+}
+
+export default function ProductItem({
+  id,
+  name,
+  description,
+  isNew,
+  imagePath,
+  price,
+  discountPrice,
+  discountPercent,
+}: ProductItemProps): JSX.Element {
+  return (
+    <div className="product-item">
+      <div className="container">
+        <header className="product-cover">
+          <img className="product-image" src={placeholder} alt={description} />
+          <ProductTags isNew={isNew} discountPercent={discountPercent} />
+        </header>
+        <article className="product-info">
+          <h3 className="product-name">{name}</h3>
+          <p className="product-description">{description}</p>
+        </article>
+        <footer className="product-price">
+          <p className="price">&#36; {discountPrice ? discountPrice : price}</p>
+
+          {discountPrice && (
+            <p className="product-comparison-price">
+              <small className="discount-price">&#36; {price}</small>
+            </p>
+          )}
+        </footer>
+      </div>
+      <div className="overlay">
+        <ul className="product-quick-links">
+          <li className='quick-link'>
+            <a href="#">See Details</a>
+          </li>
+          <li className='quick-link'>
+            <a href="#"><RiShareLine /><span>Share</span></a>
+          </li>
+          <li className='quick-link'>
+            <a href="#"><RiArrowLeftRightLine /><span>Compare</span></a>
+          </li>
+          <li className='quick-link'>
+            <a href="#"><RiHeartLine /><span>Like</span></a>
           </li>
         </ul>
-      </p>
-      <p className="description">{description}</p>
-      <p className="product-price">
-        <b className="price">
-          $ {discountPrice ? discountPrice : price}
-        </b>
-        {discountPrice && (
-          <small className="discount-price">$ {price}</small>
-        )}
-      </p>
-    </section>
+      </div>
+    </div>
   );
 }
