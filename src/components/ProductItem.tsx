@@ -32,12 +32,11 @@ function ProductTags({
           )}
           {discountPercent && (
             <li className="discount-percent">
-              <span>&minus;{discountPercent}&percnt;</span>
+              <span>&minus;{discountPercent}&#37;</span>
             </li>
           )}
         </ul>
       )}
-      ;
     </>
   );
 }
