@@ -6,14 +6,12 @@ div.product-item {
 }
 
 div.product-item > div.container {
-  width: 281px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
 div.product-item > div.container > header.product-cover {
-  height: 301px;
   position: relative;
 }
 
