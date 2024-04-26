@@ -3,6 +3,7 @@ div.product-item {
   padding-block-end: 1rem;
   width: fit-content;
   position: relative;
+  width: 100%;
 }
 
 div.product-item > div.container {
@@ -13,6 +14,7 @@ div.product-item > div.container {
 
 div.product-item > div.container > header.product-cover {
   position: relative;
+  height: 100%;
 }
 
 div.product-item > div.container > header.product-cover > ul.product-tags {
