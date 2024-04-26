@@ -28,14 +28,14 @@ export default function Categories(): JSX.Element {
     if (categories === null) {
       const fetchCategories = async () => {
         await axios
-          .get<Category[]>('http://localhost:3000/category/all')
+          .get<{page: Category[], count: number}>('http://localhost:3000/category/all?limit=3')
           .then((response) => {
-            setCategories(response.data);
+            setCategories(response.data.page);
           });
       };
       fetchCategories();
     }
-  }, []);
+  }, [categories]);
 
   const categoriesList = categories?.map((category) =>
     getListItemFromCategory(category),
