@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
+import ShopPage from './pages/ShopPage';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/shop',
-    element: <div>Shop</div>,
+    element: <ShopPage />,
     errorElement: <NotFoundPage />,
     children: [
       {
