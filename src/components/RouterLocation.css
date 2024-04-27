@@ -1,0 +1,43 @@
+ul#router-location {
+  list-style: none;
+  display: flex;
+  padding: 1rem;
+}
+
+ul#router-location > li {
+  display: flex;
+  align-items: center;
+}
+
+
+ul#router-location > li > a {
+  text-decoration: none;
+  color: var(--dark-color);
+}
+
+ul#router-location > li.router-focus > a {
+  font-weight: 500;
+}
+
+ul#router-location > li.router-item > a {
+  font-weight: 300;
+}
+
+ul#router-location > li.router-item > a {
+  font-weight: 300;
+}
+
+ul#router-location > li.router-blur > a {
+  font-weight: 400;
+  color: var(--muted-color);
+}
+
+ul#router-location > li.router-endpoint {
+  border-left: 1px solid black;
+  padding-left: 0.8rem;
+}
+
+ul#router-location > li > svg.icon {
+  font-size: 1.3rem;
+  margin-inline: 0.5rem;
+}
