@@ -1,51 +1,64 @@
 import React from 'react';
-import { RiHeartLine, RiSearchLine, RiShoppingCart2Line, RiUserLine } from 'react-icons/ri';
-import logo from '../logo.svg';
+import {
+  RiHeartLine,
+  RiSearchLine,
+  RiShoppingCart2Line,
+  RiUserLine,
+} from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar(): JSX.Element {
   return (
     <nav className="navbar">
       <header className="app-logo">
-        <img src={logo} className="app-logo-icon" alt="logo" />
-        <h2 className="app-logo-title">Furniro</h2>
+        <Link to="/">
+          <img
+            src="https://s3-alpha-sig.figma.com/img/2727/769b/a74736d502746301ed573ed8940fc322?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Vh5Y-Fi34xxpZSBcHifz25LyF2HijVHrdCQm4uOmGAcfmvxrlVwwhUgm9KIXKsXCfWWMprzhQco~5XUZIRtE8IXyXbTSSYRoUQGTfMmVT~W1tZsMx2doKHEb7XL21EdiBq524XvtzXRYjfrQ-gpyov3D498VFzX4L-OZncbEjuL3LO19VvY1CXkJ2WZuu4eLROXp~mKmCX0to0qaqSUIVonLmFEE3SN1Yi4gWZMsy8-LrW-o4233W5W0haSXJkUGTQrW13GNJStmxujHvZ~Ngo4bMokeAKONJoqzO-JaLgqdS6WCLPldhLt7c6DcosDDVpsAcFfQe2Zd8IOlZ6Runw__"
+            className="app-logo-icon"
+            alt="furniro logotype"
+          />
+        </Link>
+        <h2 className="app-logo-title">
+          <Link to="/">Furniro</Link>
+        </h2>
       </header>
 
       <ul className="nav-menu">
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Shop</a>
+          <Link to="/shop">Shop</Link>
         </li>
         <li>
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="#">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
       </ul>
 
       <ul className="shopping-menu">
         <li>
-          <a href="#">
+          <Link to="/account">
             <RiUserLine className="icon" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/search">
             <RiSearchLine className="icon" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/favorites">
             <RiHeartLine className="icon" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/cart">
             <RiShoppingCart2Line className="icon" />
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
