@@ -23,20 +23,25 @@ footer#footer > div.container > section > :is(h2, h3) {
   padding-block-end: 3rem;
 }
 
-footer#footer > div.container > section > address > p {
-  color: gray;
+footer#footer > div.container > section#about > h2 {
+  font-weight: 700;
+}
+footer#footer > div.container > section#about > address > p {
+  color: var(--muted-color);
+  font-weight: 400;
   font-style: normal;
 }
 
 footer#footer > div.container > section > h3 {
   font-size: 1rem;
-  color: gray;
+  font-weight: 500;
+  color: var(--muted-color);
 }
 
 footer#footer > div.container > section > ul > li > a {
   text-decoration: none;
+  font-weight: 500;
   color: inherit;
-  font-weight: bold;
 }
 
 footer#footer > div.container > section > ul > li > a:hover {
@@ -64,6 +69,6 @@ footer#footer > div.container > section > p > button {
 
 footer#footer > div.container > section > p > button:hover {
   background-color: black;
-  color: white;
+  color: var(--light-color);
   cursor: pointer;
 }

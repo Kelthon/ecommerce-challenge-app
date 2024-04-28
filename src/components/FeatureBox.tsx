@@ -25,7 +25,7 @@ export default function FeatureBox(): JSX.Element {
           <RiMailSendLine className="icon" />
           <section>
             <h2>Free Shipping</h2>
-            <p>Order over 150 $</p>
+            <p>Order over 150 &#36;</p>
           </section>
         </li>
         <li>

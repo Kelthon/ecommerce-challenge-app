@@ -28,6 +28,36 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/about',
+    element: <div>About page</div>,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/contact',
+    element: <div>Contact page</div>,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/account',
+    element: <div>Account page</div>,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/search',
+    element: <div>Search page</div>,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/favorites',
+    element: <div>Favorites page</div>,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/cart',
+    element: <div>Cart page</div>,
+    errorElement: <NotFoundPage />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(

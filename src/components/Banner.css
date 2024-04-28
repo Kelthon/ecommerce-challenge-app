@@ -20,5 +20,10 @@ div.banner > div.container {
   padding-block: 4rem;
   padding-inline: 3rem;
   margin-inline-end: 4rem;
-  background-color: antiquewhite;
+  background-color: var(--secondary-color);
+}
+
+div.banner > div.container {
+  font-weight: 500;
+  font-size: 1.15rem;
 }

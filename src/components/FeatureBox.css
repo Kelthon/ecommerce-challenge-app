@@ -1,5 +1,5 @@
 div#feature-box {
-  background-color: antiquewhite;
+  background-color: var(--secondary-color);
   padding-block: 3rem;
 }
 
@@ -17,6 +17,17 @@ div#feature-box > ul > li {
   gap: 0.5rem;
 }
 
-.icon {
-  font-size: 3.5rem;
+div#feature-box > ul > li > svg.icon {
+  font-size: 4rem;
+}
+
+div#feature-box > ul > li > section > h2 {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+div#feature-box > ul > li > section > p {
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--gray);
 }

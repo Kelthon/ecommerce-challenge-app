@@ -34,3 +34,8 @@ section#selected-products > p > a {
   border: 1px solid var(--primary-color);
   padding: 0.7rem 4rem;
 }
+
+section#selected-products > p > a:hover {
+  color: var(--light-color);
+  background-color: var(--primary-color);
+}

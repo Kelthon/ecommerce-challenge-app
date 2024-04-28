@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 export default function Footer(): JSX.Element {
+
+  const [email, setMail] = useState<string>("");
+
   return (
     <footer id="footer">
       <div className="container">
@@ -18,16 +22,16 @@ export default function Footer(): JSX.Element {
           <h3>Links</h3>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#">Shop</a>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <a href="#">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </section>
@@ -36,13 +40,13 @@ export default function Footer(): JSX.Element {
           <h3>Help</h3>
           <ul>
             <li>
-              <a href="#">Payment Options</a>
+              <Link to="/cart">Payment Options</Link>
             </li>
             <li>
-              <a href="#">Returns</a>
+              <Link to="/contact">Returns</Link>
             </li>
             <li>
-              <a href="#">Privacy Policies</a>
+              <Link to="/contact">Privacy Policies</Link>
             </li>
           </ul>
         </section>
@@ -50,8 +54,13 @@ export default function Footer(): JSX.Element {
         <section id="newsletter">
           <h3>Newsletter</h3>
           <p>
-            <input type="email" placeholder="Enter Your Email Address" />
-            <button type="submit">Subscribe</button>
+            <input
+              type="email"
+              placeholder="Enter Your Email Address"
+              value={email}
+              onChange={(event) => setMail(event.target.value)}
+            />
+            <button type="submit" onClick={event => setMail("")}>Subscribe</button>
           </p>
         </section>
       </div>
