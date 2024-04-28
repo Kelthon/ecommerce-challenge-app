@@ -39,7 +39,7 @@ export default function RouterLocation({
           >
             <Link to={window.location.pathname}>{item}</Link>
             {(index !== location.length - 1 || hasEndPoint) && (
-              <RiArrowRightSLine className='icon' />
+              <RiArrowRightSLine className="icon" />
             )}
           </li>
           {hasEndPoint && index === location.length - 1 && (
