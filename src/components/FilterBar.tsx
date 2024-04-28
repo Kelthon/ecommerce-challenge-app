@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   RiLayoutGridFill,
   RiEqualizerLine,
@@ -8,14 +8,36 @@ import {
   RiArrowUpFill,
   RiArrowDownFill,
 } from 'react-icons/ri';
+import { ProductItemProps as Product } from './ProductItem';
+
 import './FilterBar.css';
+import axios from 'axios';
+
+type ProductsPage = { page: Product[]; count: number; index: number };
 
 export default function FilterBar(): JSX.Element {
   const [itemPerPage, setItemsPerPage] = useState<number>(16);
-  const [indexPage, setIndexPage] = useState<number>(0);
-  const [sortBy, setSortBy] = useState<string>('');
+  const [page, setPage] = useState<ProductsPage | null>(null);
+  const [sortBy, setSortBy] = useState<string>('name');
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (page === null) {
+        await axios
+          .get<ProductsPage>(
+            `http://localhost:3000/product/all?sort=${sortBy}&order=${order}&limit=${itemPerPage}&page=${0}`,
+          )
+          .then((response) => {
+            setPage(response.data);
+          })
+          .catch((e) => console.log(e));
+      }
+    };
+
+    fetchProducts();
+  }, [itemPerPage, page, sortBy, order]);
 
   return (
     <div id="filter-bar">
@@ -40,7 +62,8 @@ export default function FilterBar(): JSX.Element {
         </button>
       </header>
       <p>
-        Showing {itemPerPage * indexPage + 1}-{itemPerPage * indexPage} of {}{' '}
+        Showing {itemPerPage * (page ? page.index : 0) + 1}-
+        {itemPerPage * (page ? page.index : 0)} of {page ? page.count : 0}{' '}
         results
       </p>
       <footer>
@@ -85,6 +108,7 @@ export default function FilterBar(): JSX.Element {
           </button>
         </p>
       </footer>
+      <div className="content"></div>
     </div>
   );
 }

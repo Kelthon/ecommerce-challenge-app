@@ -29,6 +29,7 @@ export default function RouterLocation({
       {location.map((item, index) => (
         <>
           <li
+          key={index}
             className={
               !hasEndPoint && index === 0
                 ? 'router-focus'
