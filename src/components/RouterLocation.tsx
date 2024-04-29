@@ -29,7 +29,7 @@ export default function RouterLocation({
       {location.map((item, index) => (
         <>
           <li
-          key={index}
+            key={index}
             className={
               !hasEndPoint && index === 0
                 ? 'router-focus'
@@ -44,7 +44,9 @@ export default function RouterLocation({
             )}
           </li>
           {hasEndPoint && index === location.length - 1 && (
-            <li className="router-endpoint">{item}</li>
+            <li key={'endpoint'} className="router-endpoint">
+              {item}
+            </li>
           )}
         </>
       ))}

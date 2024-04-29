@@ -83,8 +83,19 @@ div.container > div.product-list {
 
 div.container > div.product-list > ul.products {
   list-style: none;
+}
+
+div.container > div.product-list > ul.products.grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+div.container > div.product-list > ul.products.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 300px;
   gap: 1rem;
 }
 

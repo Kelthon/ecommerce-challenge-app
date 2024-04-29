@@ -38,25 +38,60 @@ function PageListCount(
 
 export default function FilterBar(): JSX.Element {
   const [itemPerPage, setItemsPerPage] = useState<number>(16);
-  const [products, setProducts] = useState<ProductsPage>();
+  const [products, setProducts] = useState<ProductsPage>({
+    page: [],
+    index: 0,
+    count: 0,
+  });
   const [sortBy, setSortBy] = useState<string>('name');
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');
+  const [enableFetch, setEnableFetch] = useState<boolean>(true);
+  const [items, setItems] = useState<JSX.Element[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const getLIfromProductsItem = () =>
+    products.page.map((product, index) => (
+      <li key={index + 1}>
+        <ProductItem
+          id={product.id}
+          name={product.name}
+          description={product.description}
+          isNew={product.isNew}
+          imagePath={product.imagePath}
+          price={product.price}
+          discountPrice={product.discountPrice}
+          discountPercent={product.discountPercent}
+        />
+      </li>
+    ));
 
   useEffect(() => {
     const fetchProducts = async () => {
-      await axios
-        .get<ProductsPage>(
-          `http://localhost:3000/product/all?sort=${sortBy}&order=${order}&limit=${itemPerPage}&page=${0}`,
-        )
-        .then((response) => {
-          setProducts(response.data);
-        })
-        .catch((e) => console.log(e));
+      if (enableFetch) {
+        await axios
+          .get<ProductsPage>(
+            `http://localhost:3000/product/all?sort=${sortBy}&order=${order}&limit=${itemPerPage}&page=${0}`,
+          )
+          .then((response) => {
+            setProducts(response.data);
+            setItems(getLIfromProductsItem());
+          })
+          .catch((e) => console.log(e));
+
+        setEnableFetch(false);
+      }
     };
 
     fetchProducts();
-  }, [itemPerPage, products, sortBy, order]);
+  }, [
+    itemPerPage,
+    sortBy,
+    order,
+    products,
+    enableFetch,
+    getLIfromProductsItem,
+  ]);
 
   return (
     <div className="container">
@@ -96,7 +131,10 @@ export default function FilterBar(): JSX.Element {
             <select
               name="items-per-page"
               id="items-per-page"
-              onChange={(e) => setItemsPerPage(+e.target.value)}
+              onChange={(e) => {
+                setEnableFetch(true);
+                setItemsPerPage(+e.target.value);
+              }}
             >
               <option defaultValue="true" value="16">
                 16
@@ -110,13 +148,15 @@ export default function FilterBar(): JSX.Element {
             <select
               name="sort-by"
               id="sort-by"
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={(e) => {
+                setEnableFetch(true);
+                setSortBy(e.target.value);
+              }}
+              value={sortBy}
             >
-              <option defaultValue="true" value="name">
-                name
-              </option>
+              <option value="name">name</option>
               <option value="price">price</option>
-              <option value="new">new</option>
+              <option value="is_new">new</option>
             </select>
           </p>
           <p>
@@ -125,7 +165,10 @@ export default function FilterBar(): JSX.Element {
               name="order"
               type="button"
               title="ordering by"
-              onClick={(e) => setOrder(order === 'asc' ? 'desc' : 'asc')}
+              onClick={(e) => {
+                setEnableFetch(true);
+                setOrder(order === 'asc' ? 'desc' : 'asc');
+              }}
             >
               {order === 'asc' ? <RiArrowUpFill /> : <RiArrowDownFill />}
               {order}
@@ -134,23 +177,8 @@ export default function FilterBar(): JSX.Element {
         </footer>
       </div>
       <div className="product-list">
-        <ul className="products">
-          {products?.page.map((product, index) => {
-            return (
-              <li key={index + 1}>
-                <ProductItem
-                  id={product.id}
-                  name={product.name}
-                  description={product.description}
-                  isNew={product.isNew}
-                  imagePath={product.imagePath}
-                  price={product.price}
-                  discountPrice={product.discountPrice}
-                  discountPercent={product.discountPercent}
-                />
-              </li>
-            );
-          })}
+        <ul className={`products ${layout}`}>
+          { items.length === 0 ? getLIfromProductsItem() : items}
         </ul>
         <ol className="page-index">
           {products && products?.index > 0 && (
@@ -161,8 +189,8 @@ export default function FilterBar(): JSX.Element {
           {products &&
             PageListCount(+products.index, +itemPerPage, +products.count)}
           {products &&
-            products?.index < products?.count / itemPerPage &&
-            products.count < 0 && (
+            products.count > itemPerPage &&
+            products.index < Math.ceil(products.count / itemPerPage) && (
               <li key="next" className="next-page">
                 next
               </li>
