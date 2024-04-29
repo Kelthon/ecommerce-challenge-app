@@ -28,8 +28,8 @@ export default function SelectedProducts(): JSX.Element {
     if (products === null) {
       const fetchProducts = async () => {
         await axios
-          .get<Product[]>('http://localhost:3000/product/all')
-          .then((response) => setProducts(response.data));
+          .get<{ page: Product[] , index: number, count: number }>('http://localhost:3000/product/all')
+          .then((response) => setProducts(response.data.page));
       };
 
       fetchProducts();
