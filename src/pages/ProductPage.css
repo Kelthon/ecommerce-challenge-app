@@ -5,6 +5,11 @@ div#product {
   margin-block: 3rem;
 }
 
+ul#router-location.router-location {
+  background-color: var(--secondary-color);
+  padding: 2rem 3rem;
+}
+
 div#product > section.product-info {
   order: 1;
 }
