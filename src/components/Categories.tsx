@@ -3,6 +3,7 @@ import './Categories.css';
 import axios from 'axios';
 import placeholder from './placeholder.jpg';
 import ImageWithFallback from './ImageWithFallback';
+import { Link } from 'react-router-dom';
 
 type Category = {
   id: number;
@@ -14,12 +15,14 @@ type Category = {
 function getListItemFromCategory(category: Category): JSX.Element {
   return (
     <li key={category.id} className="category-item">
-      <p className="category-image">
-        <ImageWithFallback 
-        src={category.image_link}
-        fallback={placeholder} alt={category.description} />
-      </p>
-      <p className="category-name">{category.name}</p>
+      <Link to={`/shop/category/${category.id}`}>
+        <p className="category-image">
+          <ImageWithFallback 
+          src={category.image_link}
+          fallback={placeholder} alt={category.description} />
+        </p>
+        <p className="category-name">{category.name}</p>
+      </Link>
     </li>
   );
 }
