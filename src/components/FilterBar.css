@@ -113,10 +113,6 @@ div.container > div.product-list > ol.page-index > li {
   border-radius: 20%;
 }
 
-div.container > div.product-list > ol.page-index > li:is(.other-page:hover, .next-page, .previous-page):hover {
-  
-}
-
 div.container > div.product-list > ol.page-index > li.current-page {
   background-color: var(--primary-color);
   color: var(--light-color);

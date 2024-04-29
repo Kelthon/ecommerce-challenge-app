@@ -2,6 +2,7 @@ import React from 'react';
 import './ProductItem.css';
 import placeholder from './placeholder.jpg';
 import { RiArrowLeftRightLine, RiHeartLine, RiShareLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 interface ProductTagsProps {
   isNew: boolean;
@@ -15,6 +16,9 @@ export interface ProductItemProps extends ProductTagsProps {
   imagePath: string;
   price: number;
   discountPrice?: number;
+  sku?: string;
+  categoryName?: string;
+  otherImagesLink?: string;
 }
 
 function ProductTags({
@@ -74,26 +78,26 @@ export default function ProductItem({
       </div>
 
       <div className="overlay">
-        <a href="#">See Details</a>
+        <Link to={`/shop/product/${id}`}>See Details</Link>
 
         <ul className="product-quick-links">
           <li className="quick-link">
-            <a href="#">
+            <Link to="/">
               <RiShareLine />
               <span>Share</span>
-            </a>
+            </Link>
           </li>
           <li className="quick-link">
-            <a href="#">
+            <Link to="/">
               <RiArrowLeftRightLine />
               <span>Compare</span>
-            </a>
+            </Link>
           </li>
           <li className="quick-link">
-            <a href="#">
+            <Link to="/">
               <RiHeartLine />
               <span>Like</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,0 +1,4 @@
+ul#router-location {
+  background-color: var(--secondary-color);
+  padding: 2rem 3rem;
+}

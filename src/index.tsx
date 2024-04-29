@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ShopPage from './pages/ShopPage';
+import ProductPage from './pages/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -17,16 +18,16 @@ const router = createBrowserRouter([
     path: '/shop',
     element: <ShopPage />,
     errorElement: <NotFoundPage />,
-    children: [
-      {
-        path: '/shop/category/:productId',
-        element: <div>Category</div>,
-      },
-      {
-        path: '/shop/product/:productId',
-        element: <div>Product</div>,
-      },
-    ],
+  },
+  {
+    path: '/shop/category/:categoryId',
+    element: <div>Category</div>,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/shop/product/:productId',
+    element: <ProductPage />,
+    errorElement: <NotFoundPage />,
   },
   {
     path: '/about',
