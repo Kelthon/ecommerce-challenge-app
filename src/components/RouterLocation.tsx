@@ -25,13 +25,16 @@ export default function RouterLocation({
   className,
 }: RouterLocationProps): JSX.Element {
   const [location, setLocation] = useState(getRoutePath());
-
-  return (
-    <ul id="router-location" className={className}>
-      {location.map((item, index) => (
-        <>
+  const [items, setItems] = useState(
+    location.map((item, index) => (
+      <>
+        {hasEndPoint && index === location.length - 1 ? (
+          <li key={`${hasEndPoint? 'rle': 're'}-${index}`} className="router-endpoint">
+            {item}
+          </li>
+        ) : (
           <li
-            key={index}
+            key={`${hasEndPoint? 'rle': 're'}${index}`}
             className={
               !hasEndPoint && index === 0
                 ? 'router-focus'
@@ -45,13 +48,14 @@ export default function RouterLocation({
               <RiArrowRightSLine className="icon" />
             )}
           </li>
-          {hasEndPoint && index === location.length - 1 && (
-            <li key={'endpoint'} className="router-endpoint">
-              {item}
-            </li>
-          )}
-        </>
-      ))}
+        )}
+      </>
+    )),
+  );
+
+  return (
+    <ul id="router-location" className={className}>
+      {items}
     </ul>
   );
 }

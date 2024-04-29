@@ -7,16 +7,19 @@ import {
 } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import ImageWithFallback from './ImageWithFallback';
+import placeholder from './placeholder.jpg';
 
 export default function Navbar(): JSX.Element {
   return (
     <nav className="navbar">
       <header className="app-logo">
         <Link to="/">
-          <img
+          <ImageWithFallback
             src="https://s3-alpha-sig.figma.com/img/2727/769b/a74736d502746301ed573ed8940fc322?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Vh5Y-Fi34xxpZSBcHifz25LyF2HijVHrdCQm4uOmGAcfmvxrlVwwhUgm9KIXKsXCfWWMprzhQco~5XUZIRtE8IXyXbTSSYRoUQGTfMmVT~W1tZsMx2doKHEb7XL21EdiBq524XvtzXRYjfrQ-gpyov3D498VFzX4L-OZncbEjuL3LO19VvY1CXkJ2WZuu4eLROXp~mKmCX0to0qaqSUIVonLmFEE3SN1Yi4gWZMsy8-LrW-o4233W5W0haSXJkUGTQrW13GNJStmxujHvZ~Ngo4bMokeAKONJoqzO-JaLgqdS6WCLPldhLt7c6DcosDDVpsAcFfQe2Zd8IOlZ6Runw__"
             className="app-logo-icon"
             alt="furniro logotype"
+            fallback={placeholder}
           />
         </Link>
         <h2 className="app-logo-title">
