@@ -10,7 +10,7 @@ export default function HomePage(): JSX.Element {
     <Page>
       <Banner />
       <Categories />
-      <SelectedProducts />
+      <SelectedProducts title='Ours products'/>
       <FeatureBox />
     </Page>
   );

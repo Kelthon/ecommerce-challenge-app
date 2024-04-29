@@ -57,9 +57,9 @@ export default function FilterBar(): JSX.Element {
           name={product.name}
           description={product.description}
           isNew={product.isNew}
-          imagePath={product.imagePath}
+          image_link={product.image_link}
           price={product.price}
-          discountPrice={product.discountPrice}
+          discount_price={product.discount_price}
           discountPercent={product.discountPercent}
         />
       </li>

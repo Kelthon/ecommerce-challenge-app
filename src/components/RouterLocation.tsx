@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 interface RouterLocationProps {
   hasEndPoint?: boolean;
+  className?: string;
 }
 
 function toCapitalize(string: string) {
@@ -21,11 +22,12 @@ function getRoutePath(): string[] {
 
 export default function RouterLocation({
   hasEndPoint,
+  className,
 }: RouterLocationProps): JSX.Element {
   const [location, setLocation] = useState(getRoutePath());
 
   return (
-    <ul id="router-location">
+    <ul id="router-location" className={className}>
       {location.map((item, index) => (
         <>
           <li

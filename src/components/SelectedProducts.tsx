@@ -4,6 +4,11 @@ import React, { useEffect, useState } from 'react';
 import ProductItem, { ProductItemProps as Product } from './ProductItem';
 import { Link } from 'react-router-dom';
 
+interface SelectedProductsProps {
+  limit?: number;
+  title: string;
+}
+
 function getListItemFromProducts(product: Product): JSX.Element {
   return (
     <li key={product.id}>
@@ -12,29 +17,40 @@ function getListItemFromProducts(product: Product): JSX.Element {
         name={product.name}
         description={product.description}
         isNew={product.isNew}
-        imagePath={product.imagePath}
+        image_link={product.image_link}
         price={product.price}
-        discountPrice={product.discountPrice}
-        discountPercent={product.discountPercent}
+        discount_price={product.discount_price}
+        discount_percent={product.discount_percent}
       />
     </li>
   );
 }
 
-export default function SelectedProducts(): JSX.Element {
+export default function SelectedProducts({
+  title,
+  limit,
+}: SelectedProductsProps): JSX.Element {
   const [products, setProducts] = useState<Product[] | null>(null);
 
   useEffect(() => {
     if (products === null) {
       const fetchProducts = async () => {
         await axios
-          .get<{ page: Product[] , index: number, count: number }>('http://localhost:3000/product/all')
+          .get<{
+            page: Product[];
+            index: number;
+            count: number;
+          }>(
+            limit
+              ? `http://localhost:3000/product/all&limit=${limit}`
+              : `http://localhost:3000/product/all`,
+          )
           .then((response) => setProducts(response.data.page));
       };
 
       fetchProducts();
     }
-  }, [products]);
+  }, [limit, products]);
 
   const productsList = products?.map((product) =>
     getListItemFromProducts(product),
@@ -42,7 +58,7 @@ export default function SelectedProducts(): JSX.Element {
 
   return (
     <section id="selected-products">
-      <h2 className="section-title">Ours Products</h2>
+      <h2 className="section-title">{title}</h2>
       <ul className="products">{productsList}</ul>
       <p>
         <Link to="/shop">See more</Link>

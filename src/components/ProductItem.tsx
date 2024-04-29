@@ -12,13 +12,18 @@ interface ProductTagsProps {
 export interface ProductItemProps extends ProductTagsProps {
   id: number;
   name: string;
-  description: string;
-  imagePath: string;
-  price: number;
-  discountPrice?: number;
   sku?: string;
-  categoryName?: string;
-  otherImagesLink?: string;
+  description: string;
+  large_description?: string;
+  price: number;
+  discount_price?: number;
+  discount_percent?: number;
+  is_new?: boolean;
+  image_link: string;
+  other_image_link?: string;
+  category?: string;
+  created_date?: Date;
+  updated_date?: Date;
 }
 
 function ProductTags({
@@ -50,9 +55,9 @@ export default function ProductItem({
   name,
   description,
   isNew,
-  imagePath,
+  image_link,
   price,
-  discountPrice,
+  discount_price: discountPrice,
   discountPercent,
 }: ProductItemProps): JSX.Element {
   return (

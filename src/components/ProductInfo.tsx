@@ -41,116 +41,123 @@ export default function ProductInfo(): JSX.Element {
   }, [product, productId]);
 
   return (
-    <div id="product">
-      <section className="product-info">
-        <h2>{product?.name}</h2>
-        <p className="product-price">
-          <span className="price">
-            {product &&
-              (product.discountPrice ? product.discountPrice : product.price)}
-          </span>
-          <small className="total-price">{product?.price}</small>
-        </p>
-        <div className="user-reviews">
-          <ul>
-            <li key="star0">
-              <RiStarFill />
-            </li>
-            <li key="star1">
-              <RiStarFill />
-            </li>
-            <li key="star2">
-              <RiStarFill />
-            </li>
-            <li key="star3">
-              <RiStarFill />
-            </li>
-            <li key="star4">
-              <RiStarHalfLine />
-            </li>
-          </ul>
-          <small>5 Customer Reviews</small>
-        </div>
-        <p className="product-description">{product?.description}</p>
-        <div className="controls">
-          <p className="amount-control">
-            <button
-              type="button"
-              onClick={(e) => inputAmountHandle(amount - 1)}
-              onBlur={(e) => fixAmount()}
-            >
-              &#8722;
-            </button>
-            <input
-              type="text"
-              value={amount}
-              onChange={(e) => inputAmountHandle(+e.target.value)}
-              onBlur={(e) => fixAmount()}
-            />
-            <button
-              type="button"
-              onClick={(e) => inputAmountHandle(amount + 1)}
-              onBlur={(e) => fixAmount()}
-            >
-              &#43;
-            </button>
+    <div className="container">
+      <div id="product">
+        <section className="product-info">
+          <h2>{product?.name}</h2>
+          <p className="product-price">
+            <span className="price">
+              {product &&
+                (product.discount_price ? product.discount_price : product.price)}
+            </span>
+            <small className="total-price">{product?.price}</small>
           </p>
-          <p className="button-control">
-            <button>Add To Cart</button>
-          </p>
-          <p className="button-control">
-            <button>&#43; Compare</button>
-          </p>
-        </div>
-        <hr />
-        <div className="container">
-          <div className="col">
-            <div className="row">SKU</div>
-            <div className="row">Category</div>
-            <div className="row">Tags</div>
-            <div className="row">Share</div>
+          <div className="user-reviews">
+            <ul>
+              <li key="star0">
+                <RiStarFill />
+              </li>
+              <li key="star1">
+                <RiStarFill />
+              </li>
+              <li key="star2">
+                <RiStarFill />
+              </li>
+              <li key="star3">
+                <RiStarFill />
+              </li>
+              <li key="star4">
+                <RiStarHalfLine />
+              </li>
+            </ul>
+            <small>5 Customer Reviews</small>
           </div>
-          <div className="col">
-            <div className="row">:</div>
-            <div className="row">:</div>
-            <div className="row">:</div>
-            <div className="row">:</div>
+          <p className="product-description">{product?.description}</p>
+          <div className="controls">
+            <p className="amount-control">
+              <button
+                type="button"
+                onClick={(e) => inputAmountHandle(amount - 1)}
+                onBlur={(e) => fixAmount()}
+              >
+                &#8722;
+              </button>
+              <input
+                type="text"
+                value={amount}
+                onChange={(e) => inputAmountHandle(+e.target.value)}
+                onBlur={(e) => fixAmount()}
+              />
+              <button
+                type="button"
+                onClick={(e) => inputAmountHandle(amount + 1)}
+                onBlur={(e) => fixAmount()}
+              >
+                &#43;
+              </button>
+            </p>
+            <p className="button-control">
+              <button>Add To Cart</button>
+            </p>
+            <p className="button-control">
+              <button>&#43; Compare</button>
+            </p>
           </div>
+          <hr />
+          <div className="container">
+            <div className="col">
+              <div className="row">SKU</div>
+              <div className="row">Category</div>
+              <div className="row">Tags</div>
+              <div className="row">Share</div>
+            </div>
+            <div className="col">
+              <div className="row">:</div>
+              <div className="row">:</div>
+              <div className="row">:</div>
+              <div className="row">:</div>
+            </div>
 
-          <div className="col">
-            <div className="row">{product?.sku}</div>
-            <div className="row">{product?.categoryName}</div>
-            <div className="row"></div>
-            <div className="row">
-              <ul id="social-medias">
-                <li>
-                  <RiFacebookBoxFill />
-                </li>
-                <li>
-                  <RiLinkedinBoxFill />
-                </li>
-                <li>
-                  <RiTwitterFill />
-                </li>
-              </ul>
+            <div className="col">
+              <div className="row">{product?.sku}</div>
+              <div className="row">{product?.category}</div>
+              <div className="row"></div>
+              <div className="row">
+                <ul id="social-medias">
+                  <li>
+                    <RiFacebookBoxFill />
+                  </li>
+                  <li>
+                    <RiLinkedinBoxFill />
+                  </li>
+                  <li>
+                    <RiTwitterFill />
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+        <aside className="product-image">
+          <img src={image} alt={product?.description} />
+          <ul className="grid-image">
+            {product?.other_image_link?.split(' ').map((link, index) => {
+              return (
+                <li key={index}>
+                  <button type="button" onClick={(e) => setImage(link)}>
+                    <img src={link} alt={product?.description} />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </aside>
+      </div>
+      <hr />
+      <section className='product-large-description'>
+        <h2>Description</h2>
+        <p>{product?.large_description}</p>
       </section>
-      <aside className="product-image">
-        <img src={image} alt={product?.description} />
-        <ul className="grid-image">
-          {product?.otherImagesLink?.split(' ').map((link, index) => {
-            return (
-              <li key={index}>
-                <button type="button" onClick={(e) => setImage(link)}>
-                  <img src={link} alt={product?.description} />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </aside>
     </div>
   );
 }
