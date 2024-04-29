@@ -5,7 +5,7 @@ import placeholder from './placeholder.jpg';
 import ImageWithFallback from './ImageWithFallback';
 import { Link } from 'react-router-dom';
 
-type Category = {
+export interface Category {
   id: number;
   name: string;
   description: string;

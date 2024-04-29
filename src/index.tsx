@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ShopPage from './pages/ShopPage';
 import ProductPage from './pages/ProductPage';
+import CategoryPage from './pages/CategoryPage';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/shop/category/:categoryId',
-    element: <div>Category</div>,
+    element: <CategoryPage />,
     errorElement: <NotFoundPage />,
   },
   {
