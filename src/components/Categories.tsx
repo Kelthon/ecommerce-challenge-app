@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Categories.css';
 import axios from 'axios';
 import placeholder from './placeholder.jpg';
+import ImageWithFallback from './ImageWithFallback';
 
 type Category = {
   id: number;
@@ -14,7 +15,9 @@ function getListItemFromCategory(category: Category): JSX.Element {
   return (
     <li key={category.id} className="category-item">
       <p className="category-image">
-        <img src={placeholder} alt={category.description} />
+        <ImageWithFallback 
+        src={category.image_link}
+        fallback={placeholder} alt={category.description} />
       </p>
       <p className="category-name">{category.name}</p>
     </li>

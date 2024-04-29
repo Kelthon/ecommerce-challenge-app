@@ -3,6 +3,7 @@ import './ProductItem.css';
 import placeholder from './placeholder.jpg';
 import { RiArrowLeftRightLine, RiHeartLine, RiShareLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+import ImageWithFallback from './ImageWithFallback';
 
 interface ProductTagsProps {
   isNew: boolean;
@@ -64,7 +65,12 @@ export default function ProductItem({
     <div className="product-item">
       <div className="container">
         <header className="product-cover">
-          <img className="product-image" src={placeholder} alt={description} />
+          <ImageWithFallback
+            className="product-image"
+            src={image_link}
+            alt={description}
+            fallback={placeholder}
+          />
           <ProductTags isNew={isNew} discountPercent={discountPercent} />
         </header>
         <article className="product-info">
