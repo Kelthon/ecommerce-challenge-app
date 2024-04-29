@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   RiLayoutGridFill,
   RiEqualizerLine,
@@ -48,9 +48,8 @@ export default function FilterBar(): JSX.Element {
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');
   const [enableFetch, setEnableFetch] = useState<boolean>(true);
   const [items, setItems] = useState<JSX.Element[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
-  const getLIfromProductsItem = () =>
+  const getLIfromProductsItem = useCallback(() =>
     products.page.map((product, index) => (
       <li key={index + 1}>
         <ProductItem
@@ -64,7 +63,7 @@ export default function FilterBar(): JSX.Element {
           discountPercent={product.discountPercent}
         />
       </li>
-    ));
+    )), [products]);
 
   useEffect(() => {
     const fetchProducts = async () => {
